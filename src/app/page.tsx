@@ -7,12 +7,14 @@ export default function Home() {
       <p className="text-gray-500 mb-6">
         my-harness-flow 示例项目 — 任务管理器
       </p>
-      <Link
-        href="/tasks"
-        className="inline-block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-      >
-        进入任务管理
-      </Link>
+      <div className="flex gap-3 justify-center">
+        <Link href="/tasks" className="inline-block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+          列表视图
+        </Link>
+        <Link href="/board" className="inline-block px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600">
+          看板视图
+        </Link>
+      </div>
     </main>
   );
 }
