@@ -7,8 +7,11 @@ let tasks: { id: number; title: string; done: boolean }[] = [
 
 const nextId = () => Math.max(0, ...tasks.map((t) => t.id)) + 1;
 
-export async function GET() {
-  return NextResponse.json(tasks);
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const q = searchParams.get('q')?.toLowerCase() || '';
+  const filtered = q ? tasks.filter((t) => t.title.toLowerCase().includes(q)) : tasks;
+  return NextResponse.json(filtered);
 }
 
 export async function POST(req: Request) {
@@ -26,4 +29,13 @@ export async function DELETE(req: Request) {
   const id = parseInt(searchParams.get('id') || '0', 10);
   tasks = tasks.filter((t) => t.id !== id);
   return NextResponse.json({ ok: true });
+}
+
+export async function PATCH(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const id = parseInt(searchParams.get('id') || '0', 10);
+  const task = tasks.find((t) => t.id === id);
+  if (!task) return NextResponse.json({ error: 'not found' }, { status: 404 });
+  task.done = !task.done;
+  return NextResponse.json(task);
 }
