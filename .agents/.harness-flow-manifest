@@ -4,7 +4,7 @@ e080932eeb845d1ef3de25c742378be46c2e8603704a24d055b5fc9541a0173e  .agents/skills
 a24c38e0a0b68d4d0027abf65892d8b9a1f6ee5f54da21513ab4ca657f32c2de  .agents/skills/diagnose-ci-failures/SKILL.md
 5d893d3b22fa9b456d8098cfa2fc5b7bef53dd546b0e0458c8e828477045d05b  .agents/skills/diagnose/SKILL.md
 fa5584a1b5010dd52ed740513105562a5aa0c23729bb695228613e368b6fc9ce  .agents/skills/diagnose/SKILL.md.harness
-69d5e3bef34ce60ce09c1d1d23ce90e25d9646a24ba9618393044fd908f179e1  .agents/skills/finish-task/SKILL.md
+95419c6d79e62a20fb70b1f2ffa4bdb733d43f58c1107aa792d25e78090d6092  .agents/skills/finish-task/SKILL.md
 69d5e3bef34ce60ce09c1d1d23ce90e25d9646a24ba9618393044fd908f179e1  .agents/skills/finish-task/SKILL.md.harness
 a4ea4e1cce0ab7b4f13fdcfa7ef8a30f523c7908adbfb313492f7e413ab004be  .agents/skills/git-branch/SKILL.md
 5c97d65a502656b814847a7f49e8d6375d7be68fb62ab023caf58f7e0f7a6e6b  .agents/skills/git-branch/references/issue-id-examples.md
@@ -36,8 +36,8 @@ bfcf632baea25baf143969d10426a5f4f4194e4d1bf0faf1b99e7e1ee0439ced  .agents/skills
 f4eed7abb19200db2b5e782754445e440f48cae071d24cc8d3cb0275ef5b4120  .agents/quality-gate/l1-health-check.sh
 7f1da304f82866d17eb80d293c08a89566898abc8c763e95f9b2ea8c0855cb04  .agents/quality-gate/l1-smoke/health-check.sh
 79c3db97e89057e1001bc5990dd705dc8e257e4d9bb9e2355ac5f2ceb019cdda  .agents/quality-gate/l2-integration.sh
-d52cb6e4164f14d5ed680330adf2fcf4bfb9699e4f232720697a2e80fe789b61  .agents/quality-gate/l2-integration/run-l2-integration.sh
-8c727e98f780b17d0caa629f65060f7fc78c416e7c269793c5a8d14efc3ee43b  .agents/quality-gate/l3-e2e/run-l3-e2e.sh
+75cdac44e72cf44470d396cf61488060a6a21c864c1585cdef6c26c4b5707b02  .agents/quality-gate/l2-integration/run-l2-integration.sh
+7632c65e637ff6860b1b87fa042d84186b8d590b3eab00460de809b892d44b1b  .agents/quality-gate/l3-e2e/run-l3-e2e.sh
 ba9aaf3755b8699e856a566c0b46239967eace1c637850cb1e7c0df70e0841ba  .agents/quality-gate/l4-security/run-l4-security.sh
 9bf7e17a2c692dd7c1c47056f758ba46f74b876f88a27de5469b5fd35da19912  .agents/quality-gate/l5-regression/run-l5-regression.sh
 251be6287361b6d7f326991cc2997582ac46af519950c984edd3e016b0596196  .agents/contracts/review.md
