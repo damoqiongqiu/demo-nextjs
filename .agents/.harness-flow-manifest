@@ -40,12 +40,6 @@ d52cb6e4164f14d5ed680330adf2fcf4bfb9699e4f232720697a2e80fe789b61  .agents/qualit
 8c727e98f780b17d0caa629f65060f7fc78c416e7c269793c5a8d14efc3ee43b  .agents/quality-gate/l3-e2e/run-l3-e2e.sh
 ba9aaf3755b8699e856a566c0b46239967eace1c637850cb1e7c0df70e0841ba  .agents/quality-gate/l4-security/run-l4-security.sh
 9bf7e17a2c692dd7c1c47056f758ba46f74b876f88a27de5469b5fd35da19912  .agents/quality-gate/l5-regression/run-l5-regression.sh
-ea8f616517128b6f2508ae1e6b6dde20b00578fd0ce88648c1b4425adfa53270  .agents/quality-gate/scenarios/README.md
-9280f48c017c4605589689b7493d1bd0ea3f6efb6d7dedc1092e934f0bedb7cf  .agents/quality-gate/scenarios/l1-smoke/health-check.sh
-4bb944d398974196f6ba7d4b129a3b509f150e3a5e7f1372b643b0aeb24277c6  .agents/quality-gate/scenarios/l2-integration/run-l2-integration.sh
-0b24b6960d8746e2d2aa7f2a1a272e56d2ab53c756f4616a82a9684e253eb6f3  .agents/quality-gate/scenarios/l3-e2e/run-l3-e2e.sh
-88c3b981569a391e9d5712847829a84bbd69c8d3269279d4b4f187c9dad5f444  .agents/quality-gate/scenarios/l4-security/run-l4-security.sh
-1e85beb58eee6108a3369da9cb0d1ac412e37b5f2102951a1954bacef105274f  .agents/quality-gate/scenarios/l5-regression/run-l5-regression.sh
 251be6287361b6d7f326991cc2997582ac46af519950c984edd3e016b0596196  .agents/contracts/review.md
 929639db5e5052328d4bea09d9e73754b9334088461af943a75238b6adc93648  .agents/contracts/review.schema.json
 b81c13c7f476978c99b88c3a2b6187cee834177b1a6f17361efb117c2cd23dcd  .github/skills/check-impl-against-spec/SKILL.md
