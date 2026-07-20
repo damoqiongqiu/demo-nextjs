@@ -1,4 +1,5 @@
 <!-- my-harness-flow: begin -->
+# demo-nextjs
 ## 0. 路径约定（CRITICAL）
 本项目通过 my-harness-flow 安装。当 agent 工作目录在 harness framework 仓库时，以下目录的**所有读写操作必须指向本项目**（非 framework 仓库）：
 | 目录 | 用途 | 示例 |
@@ -88,6 +89,7 @@ Profile 技能已在 `.agents/skills/` 下，与核心技能一起注册。
 ---
 
 <!-- 以下为用户自定义内容，由 my-harness-flow 原样保留 -->
+
 
 # {{PROJECT_NAME}}
 
