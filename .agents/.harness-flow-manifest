@@ -1,11 +1,8 @@
 e080932eeb845d1ef3de25c742378be46c2e8603704a24d055b5fc9541a0173e  .agents/skills/bootstrap-issue-config/SKILL.md
-89463e16aafc69ec6315e6d0bd021a5103177eb8084331868ad8db74905161c3  .agents/skills/build-verify/SKILL.md
-d4f5c16d88145172935d74b321daae7853e4ba70603239e7ac331d676198c4c1  .agents/skills/component-test/SKILL.md
 ef01ff95c48beb7ba099be1eefdec7630326e7efcdae27f44ee1b1a2e74512b6  .agents/skills/create-issue/SKILL.md
 aa7b6606dd8fa5ca62f8d40ef93160f0fbed7991a6862dc2c34d5734f5fc53ee  .agents/skills/create-pr/SKILL.md
 a24c38e0a0b68d4d0027abf65892d8b9a1f6ee5f54da21513ab4ca657f32c2de  .agents/skills/diagnose-ci-failures/SKILL.md
 24cfcb6d1cfd9a70bd6f8b24588338c04665ad6acfd379f55d77af38282f25e9  .agents/skills/diagnose/SKILL.md
-f5ef70039c3bd76e55d928de0f5d5ea3f6cdf226d1908fe5b04405d825b1b6c8  .agents/skills/e2e-test/SKILL.md
 0cfa06b35bc0285e87096fbd8d819d99bfaa398a17d4d02e9511b6bea251090c  .agents/skills/finish-task/SKILL.md
 a4ea4e1cce0ab7b4f13fdcfa7ef8a30f523c7908adbfb313492f7e413ab004be  .agents/skills/git-branch/SKILL.md
 5c97d65a502656b814847a7f49e8d6375d7be68fb62ab023caf58f7e0f7a6e6b  .agents/skills/git-branch/references/issue-id-examples.md

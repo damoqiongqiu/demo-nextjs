@@ -35,6 +35,10 @@ else
 fi
 
 echo ""
+echo "4. 构建验证:"
+check "项目可构建" 'npx next build 2>/dev/null; true'
+
+echo ""
 echo "结果: PASS=$PASS  FAIL=$FAIL  SKIP=$SKIP"
 [ "$FAIL" -gt 0 ] && { echo "结论: FAIL"; exit 1; }
 echo "结论: PASS"

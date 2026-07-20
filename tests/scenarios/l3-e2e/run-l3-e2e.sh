@@ -1,72 +1,28 @@
 #!/usr/bin/env bash
-# L3 E2E 测试 — 全业务流程（跨模块）
-#
-# 约定：
-#   - 全部通过 → exit 0（PASS）
-#   - 任一失败 → exit 1（FAIL）
-#   - 无运行环境（如 Docker/测试集群不可用）→ 输出 SKIP 并 exit 0，不算 FAIL
-#
-# 实现方式：按业务场景写 test_<scenario>() 函数，在 SCENARIOS 数组注册。
-
 set -euo pipefail
+echo "=== L3 E2E ==="
+PASS=0 FAIL=0
+pass() { PASS=$((PASS+1)); }
+fail() { FAIL=$((FAIL+1)); echo "  [FAIL] $1 — $2"; }
 
-PASS=0 FAIL=0 SKIP=0
+# Start server
+pkill -f "next dev" 2>/dev/null || true; sleep 1
+PORT=3500; NODE_OPTIONS= npx next dev -p $PORT &>/tmp/njs-l3.log & PID=$!
+for i in $(seq 1 10); do sleep 2; curl -s http://localhost:$PORT 2>/dev/null | grep -q 'demo' && break; done
 
-pass() { PASS=$((PASS + 1)); echo "  [PASS] $1"; }
-fail() { FAIL=$((FAIL + 1)); echo "  [FAIL] $1 - $2"; }
+echo "1. 页面渲染:"
+curl -s http://localhost:$PORT | grep -q 'demo-nextjs' && pass "首页" || fail "首页" "无内容"
+curl -s http://localhost:$PORT/tasks | grep -q '任务管理' && pass "任务页" || fail "任务页" "无内容"
+curl -s http://localhost:$PORT/board | grep -q '看板' && pass "看板页" || fail "看板页" "无内容"
 
-# ── 环境检测 ─────────────────────────────────────────
+echo "2. API 流程:"
+R=$(curl -s -X POST http://localhost:$PORT/api/tasks -H "Content-Type: application/json" -d '{"title":"E2E task"}')
+echo "$R" | grep -q '"id"' && pass "创建" || fail "创建" "失败"
+ID=$(echo "$R" | python3 -c "import sys,json;print(json.load(sys.stdin)['id'])" 2>/dev/null)
+curl -s -X PATCH "http://localhost:$PORT/api/tasks?id=$ID&status=done" | grep -q '"done":true' && pass "完成" || fail "完成" "失败"
+curl -s -X DELETE "http://localhost:$PORT/api/tasks?id=$ID" | grep -q '"ok"' && pass "删除" || fail "删除" "失败"
 
-check_env() {
-  # 检测运行环境是否可用（Docker/测试集群等）
-  # command -v docker >/dev/null 2>&1 || { echo "  [SKIP] Docker 不可用，跳过 E2E 测试"; SKIP=$((SKIP + 1)); exit 0; }
-  :
-}
-
-# ── 场景测试函数（按项目实际情况实现）───────────────
-
-# test_user_register_to_order() {
-#   echo "--- 用户注册到下单全流程 ---"
-#   # 1. 注册用户 → 获取 token
-#   # 2. 创建订单 → 获取订单号
-#   # 3. 支付 → 验证状态变更
-#   # 4. 查询订单 → 验证一致性
-#   pass "用户注册到下单全流程"
-# }
-
-# ── 场景注册 ─────────────────────────────────────────
-
-# 按项目实际情况注册
-SCENARIOS=(
-  # "用户注册到下单:test_user_register_to_order"
-)
-
-# ── 运行 ─────────────────────────────────────────────
-
-echo "=== L3 E2E 测试 ==="
-echo ""
-
-check_env
-
-if [ ${#SCENARIOS[@]} -eq 0 ]; then
-  echo "结果: SKIP（未注册任何 E2E 场景，请在 SCENARIOS 数组中注册）"
-  exit 0
-fi
-
-for entry in "${SCENARIOS[@]}"; do
-  name="${entry%%:*}"
-  func="${entry##*:}"
-  $func
-done
-
-total=$((PASS + FAIL))
-echo ""
-echo "结果: PASS=$PASS  FAIL=$FAIL  SKIP=$SKIP"
-
-if [ "$FAIL" -gt 0 ]; then
-  echo "结论: FAIL（$FAIL 个场景未通过）"
-  exit 1
-else
-  echo "结论: PASS"
-  exit 0
-fi
+kill $PID 2>/dev/null; wait $PID 2>/dev/null || true
+echo "结果: PASS=$PASS  FAIL=$FAIL"
+[ "$FAIL" -gt 0 ] && { echo "结论: FAIL"; exit 1; }
+echo "结论: PASS"
