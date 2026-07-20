@@ -35,6 +35,21 @@ else
 fi
 
 echo ""
+echo "5. Spec 完整性:"
+if [ -d docs/exec-plans/active ] && ls docs/exec-plans/active/*.md >/dev/null 2>&1; then
+  for plan in docs/exec-plans/active/*.md; do
+    topic="$(basename "$plan" .md)"
+    if [ -d "specs/$topic" ]; then
+      echo "  [PASS] $topic → specs/$topic/"
+    else
+      echo "  [WARN] $topic 缺 spec——请先创建 specs/$topic/product.md"
+    fi
+  done
+else
+  echo "  [SKIP] 无活跃 exec-plan"
+fi
+
+echo ""
 echo "结果: PASS=$PASS  FAIL=$FAIL  SKIP=$SKIP"
 [ "$FAIL" -gt 0 ] && { echo "结论: FAIL"; exit 1; }
 echo "结论: PASS"
